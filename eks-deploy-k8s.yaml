@@ -5,7 +5,7 @@ metadata:
     app: springboot-app
   name: springboot-app
 spec:
-  replicas: 4
+  replicas: 1
   selector:
     matchLabels:
       app: springboot-app
@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: my-springboot-app
-        image: 211223789150.dkr.ecr.us-east-1.amazonaws.com/my-springboot-app:latest
+        image: 637423598432.dkr.ecr.ap-south-1.amazonaws.com/colder:12
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 80
           name: http
           protocol: TCP
 # service type loadbalancer       
@@ -36,7 +36,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8085
+    targetPort: 90
   type: LoadBalancer
   selector:
     app: springboot-app
